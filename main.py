@@ -3,18 +3,17 @@ import facebook
 import json
 import os
 
-load_dotenv()
+from generate_post import generate
 
+load_dotenv()
 groups = json.loads(os.environ['GROUPS'])
 access_token = os.environ['ACCESS_TOKEN']
 
-msg = "TEST 02"
-link = 'https://mottovillas.com/'
-
+message = generate('Villa Tepe')
 graph = facebook.GraphAPI(access_token=access_token)
 
 for group in groups:
-    post = graph.put_object(group, 'feed',message = msg, link=link)
+    post = graph.put_object(group, 'feed',message=message, link='https://mottovillas.com/')
     print(post)
 
 
