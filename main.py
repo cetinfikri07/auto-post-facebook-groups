@@ -10,6 +10,10 @@ groups = json.loads(os.environ['GROUPS'])
 access_token = os.environ['ACCESS_TOKEN']
 
 message = generate('Villa Tepe')
+
+with open('response.txt','w') as f:
+    f.write(message)
+
 graph = facebook.GraphAPI(access_token=access_token)
 
 for group in groups:
